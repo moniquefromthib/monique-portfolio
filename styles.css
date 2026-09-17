@@ -1,0 +1,166 @@
+/* MONIQUE J. JOHNSON — poster-led portfolio */
+:root {
+  --paper: #f4f2ed;
+  --ink: #101010;
+  --hairline: rgba(16,16,16,.28);
+  --muted: rgba(16,16,16,.62);
+  --rail: 30px;
+  --gutter: clamp(34px, 5vw, 84px);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--paper); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+::selection { background: #111; color: var(--paper); }
+
+.page-grid { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.page-grid .v { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--hairline); }
+.v-1 { left: var(--rail); }
+.v-2 { left: 38%; opacity: .48; }
+.v-3 { left: 72%; opacity: .48; }
+.v-4 { right: var(--rail); }
+
+.site-rail {
+  position: fixed; z-index: 50; top: 0; bottom: 0; width: var(--rail);
+  display: flex; align-items: center; gap: 22px; padding: 10px 0;
+  font-size: 9px; line-height: 1; letter-spacing: .13em; text-transform: uppercase;
+  writing-mode: vertical-rl; text-orientation: mixed;
+}
+.site-rail a { text-decoration: none; }
+.site-rail a:hover { text-decoration: line-through; }
+.site-rail--left { left: 0; transform: rotate(180deg); }
+.site-rail--right { right: 0; justify-content: flex-start; }
+.rail-name { font-weight: 700; }
+
+main { position: relative; z-index: 1; margin: 0 var(--rail); }
+section { position: relative; padding-left: var(--gutter); padding-right: var(--gutter); }
+.section-rule { border-top: 1px solid var(--hairline); }
+
+.hero { min-height: 100svh; padding-top: 22px; padding-bottom: 28px; overflow: hidden; }
+.hero-meta { display: flex; justify-content: space-between; gap: 20px; }
+.microcopy { font-size: 9px; line-height: 1.25; letter-spacing: .12em; text-transform: uppercase; }
+.signature-wrap { display: flex; min-height: 67svh; align-items: center; justify-content: center; }
+.signature {
+  width: min(1100px, 92vw); aspect-ratio: 1146 / 601;
+  background: url("assets/signature.png") center / contain no-repeat;
+  transform: rotate(-3deg) scale(1.03);
+  filter: contrast(1.1);
+  transform-origin: center;
+}
+.hero-bottom { display: grid; grid-template-columns: minmax(0, 420px) 1fr; align-items: end; gap: 8vw; }
+.hero-intro { margin: 0; max-width: 420px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(18px, 2vw, 31px); line-height: 1.04; }
+.hero-index { margin: 0; justify-self: end; width: 180px; }
+.blink { display: inline-block; font-size: 7px; animation: blink 1.8s steps(1) infinite; }
+@keyframes blink { 50% { opacity: .18; } }
+.crop { position: absolute; width: 16px; height: 16px; }
+.crop::before, .crop::after { content:""; position:absolute; background:var(--ink); }
+.crop::before { width: 16px; height: 1px; }
+.crop::after { width: 1px; height: 16px; }
+.crop--tl { left: 12px; top: 42px; }
+.crop--br { right: 12px; bottom: 22px; transform: rotate(180deg); }
+.scribble { position: absolute; font-family: Georgia, serif; font-style: italic; font-size: 72px; transform: rotate(-18deg); opacity: .9; }
+.scribble--one { right: 4vw; bottom: 16vh; text-decoration: line-through; }
+
+.section-heading {
+  display: grid; grid-template-columns: 42px minmax(0,1fr) minmax(160px, 28%); gap: 12px; align-items: baseline;
+  padding: 18px 0 14px; border-bottom: 1px solid var(--hairline);
+}
+.section-heading h1, .section-heading h2 { margin: 0; font-size: clamp(28px, 4.4vw, 76px); line-height: .9; letter-spacing: -.055em; font-weight: 500; }
+.section-heading p { margin: 0; font-size: 9px; letter-spacing: .11em; text-transform: uppercase; }
+.section-number { font-size: 9px; letter-spacing: .1em; }
+
+.work { min-height: 1750px; padding-bottom: 80px; }
+.poster-field { position: relative; min-height: 1550px; }
+.project { position: absolute; margin: 0; }
+.project--a { width: min(31vw, 470px); left: 46%; top: 90px; }
+.project--b { width: min(24vw, 350px); left: 8%; top: 360px; }
+.project--c { width: min(28vw, 400px); right: 5%; top: 750px; }
+.project--d { width: min(33vw, 500px); left: 23%; top: 1060px; }
+.project-surface { display: block; position: relative; border: 1px solid var(--ink); background: #ebe8e1; color: var(--ink); text-decoration: none; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+a.project-surface:hover { transform: translate(-5px,-5px) rotate(-.4deg); box-shadow: 7px 7px 0 var(--ink); }
+.type-surface { aspect-ratio: 4/5; padding: 14px; }
+.type-surface strong { position: absolute; font-size: clamp(42px, 8vw, 116px); line-height: .72; letter-spacing: -.085em; font-weight: 500; }
+.type-surface em { position: absolute; bottom: 13px; left: 14px; font-family: Georgia, serif; font-size: 13px; }
+.surface-kicker { position: absolute; top: 14px; right: 14px; max-width: 120px; font-size: 8px; line-height: 1.15; text-transform: uppercase; letter-spacing: .09em; text-align: right; }
+.type-surface--goodwork strong { left: 8px; bottom: 56px; font-family: Georgia, serif; font-style: italic; }
+.type-surface--wife { background: #111; color: var(--paper); }
+.type-surface--wife strong { left: 12px; top: 78px; font-size: clamp(50px, 7vw, 94px); }
+.type-surface--teeth strong { top: 14%; left: 12px; font-family: Georgia, serif; font-size: clamp(42px,7vw,105px); }
+.oversized-letter { position: absolute; right: -18px; bottom: -95px; font-family: Georgia, serif; font-size: 310px; line-height: 1; opacity: .17; }
+.type-surface--merde strong { left: 12px; top: 44%; transform: rotate(-90deg) translateX(-20%); transform-origin: left top; font-size: clamp(50px, 8vw, 120px); }
+.mini-grid { position: absolute; inset: 12% 10% 14% 42%; background-image: linear-gradient(var(--hairline) 1px, transparent 1px), linear-gradient(90deg,var(--hairline) 1px,transparent 1px); background-size: 20px 20px; }
+.project-caption { margin-top: 7px; display: flex; justify-content: space-between; gap: 10px; font-size: 8px; line-height: 1.2; text-transform: uppercase; letter-spacing: .08em; }
+.field-note { position: absolute; font-family: "Arial Narrow", Arial, sans-serif; font-size: clamp(18px, 2.4vw, 34px); line-height: .84; letter-spacing: -.04em; }
+.field-note--one { top: 160px; left: 2%; }
+.field-note--two { top: 880px; left: 3%; font-family: Georgia, serif; font-size: 13px; line-height: .95; }
+
+.writing { padding-top: 0; padding-bottom: 100px; }
+.writing-list { border-bottom: 1px solid var(--hairline); }
+.story { display: grid; grid-template-columns: 46px minmax(0,1fr) 120px; gap: 10px; align-items: baseline; padding: 18px 0 15px; border-top: 1px solid var(--hairline); text-decoration: none; }
+.story:first-child { border-top: 0; }
+.story-no, .story-type { font-size: 8px; letter-spacing: .11em; text-transform: uppercase; }
+.story-type { text-align: right; }
+.story-title { font-family: Georgia, "Times New Roman", serif; font-size: clamp(24px, 4vw, 61px); line-height: .96; letter-spacing: -.035em; }
+.story:hover .story-title { font-style: italic; }
+.text-link { display: inline-block; margin-top: 18px; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+
+.about { min-height: 82svh; padding-bottom: 80px; overflow: hidden; }
+.about-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 8vw; padding-top: 11vh; align-items: start; }
+.about-big { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 5.2vw, 78px); line-height: .93; letter-spacing: -.04em; }
+.about-small { padding-top: 8px; max-width: 360px; font-size: 14px; line-height: 1.35; }
+.about-small p { margin: 0 0 22px; }
+.signature-stamp { position: absolute; right: -7vw; bottom: -20px; width: 420px; aspect-ratio: 1146/601; background: url("assets/signature.png") center/contain no-repeat; transform: rotate(17deg); opacity: .12; }
+
+.contact { min-height: 65svh; border-top: 1px solid var(--ink); display: flex; flex-direction: column; justify-content: space-between; padding-top: 22px; padding-bottom: 20px; }
+.contact-email { display: block; align-self: flex-start; max-width: 100%; font-size: clamp(38px, 7.8vw, 130px); line-height: .82; letter-spacing: -.065em; text-decoration: none; overflow-wrap: anywhere; }
+.contact-email:hover { font-family: Georgia, serif; font-style: italic; }
+.contact-foot { display: flex; justify-content: space-between; gap: 24px; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
+
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .blink { animation: none; }
+}
+
+@media (max-width: 850px) {
+  :root { --rail: 0px; --gutter: 18px; }
+  .page-grid .v-1, .page-grid .v-4 { display:none; }
+  .page-grid .v-2 { left: 50%; }
+  .page-grid .v-3 { display:none; }
+  .site-rail { position: fixed; top: auto; bottom: 0; width: 100%; height: 34px; writing-mode: horizontal-tb; background: var(--paper); border-top: 1px solid var(--ink); padding: 0 10px; flex-direction: row; justify-content: space-between; }
+  .site-rail--left { display:none; }
+  .site-rail--right { right: 0; }
+  main { margin: 0; padding-bottom: 34px; }
+  .hero { min-height: 92svh; }
+  .hero-meta { flex-direction: column; gap: 3px; }
+  .signature-wrap { min-height: 56svh; }
+  .signature { width: 112vw; transform: rotate(-5deg) translateX(-2vw); }
+  .hero-bottom { grid-template-columns: 1fr; gap: 22px; }
+  .hero-index { justify-self: start; }
+  .scribble--one { display:none; }
+  .section-heading { grid-template-columns: 32px 1fr; }
+  .section-heading p { grid-column: 2; }
+  .work { min-height: auto; }
+  .poster-field { min-height: auto; padding: 42px 0 76px; display: grid; grid-template-columns: 1fr; gap: 46px; }
+  .project { position: relative; inset: auto !important; width: min(88vw, 520px) !important; }
+  .project:nth-of-type(even) { justify-self: end; width: min(74vw, 420px) !important; }
+  .field-note { position: static; }
+  .field-note--one { order: -1; }
+  .field-note--two { margin-top: -14px; }
+  .story { grid-template-columns: 32px 1fr; }
+  .story-type { grid-column: 2; text-align: left; }
+  .about-grid { grid-template-columns: 1fr; padding-top: 8vh; gap: 36px; }
+  .contact { min-height: 58svh; }
+  .contact-foot { flex-direction: column; }
+}
